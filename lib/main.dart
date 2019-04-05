@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FP Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -67,7 +68,7 @@ class _MyHomepageState extends State<MyHomePage> {
   Future<void> _authorizeNow() async {
     bool isAuthorized = false;
     try {
-     var isAuthenticated = await _localAuthentication.authenticateWithBiometrics(
+        isAuthorized = await _localAuthentication.authenticateWithBiometrics(
         localizedReason: "Please autheticate to proceed!",
         useErrorDialogs: true,
         stickyAuth: true,
@@ -113,7 +114,7 @@ class _MyHomepageState extends State<MyHomePage> {
                 onPressed: _getBiometricList),
             Text("Authorized: $_authorized"),
             RaisedButton(
-                child: Text("List Biometric Types"),
+                child: Text("Authrize Biometrics"),
                 color: Colors.green,
                 colorBrightness: Brightness.dark,
                 onPressed: _authorizeNow)
